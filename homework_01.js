@@ -46,7 +46,7 @@ function buildOddArrayR(n) {
     if (n == 0) {
         return 0;
     } else {
-        return 2 * n - 1 + sumOddR(n-1);
+        return 2 * n - 1 + buildOddArrayR(n-1);
     }
 }
 
@@ -176,11 +176,11 @@ function multR(a,b){
 
 
 // Per Tiziano
-function ex_5_I(a,b) {
+function ex_5_I(x) {
     return mult(a,b);
 }
 
-function ex_5_R(a,b) {
+function ex_5_R(x) {
     return multR(a,b);
 }
 
@@ -243,11 +243,11 @@ function powaR(a,b){
      } 
 }
 // Per Tiziano
-function ex_7_I(a,b) {
+function ex_7_I(x) {
     return powa(a,b);
 }
 
-function ex_7_R(a,b) {
+function ex_7_R(x) {
     return powaR(a,b);
 }
 
@@ -271,7 +271,7 @@ function ex_8_I(x) {
     return matrix(x);
 }
 
-function ex_1_R(x) {
+function ex_8_R(x) {
     return matrixR(x);
 }
 /*Esercizio 9
@@ -292,7 +292,7 @@ function ex_9_I(x) {
     return ordina(x);
 }
 
-function ex__R(x) {
+function ex_9_R(x) {
     return ordinaR(x);
 }
 /*Esercizio 10
@@ -336,7 +336,7 @@ function padi(myarray){
 
 // Per Tiziano
 function ex_11_I(x) {
-    return padig(x);
+    return padi(x);
 }
 
 function ex_11_R(x) {

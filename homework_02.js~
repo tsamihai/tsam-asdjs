@@ -146,3 +146,6 @@ function ex_7_F(a,b){
 	return myarray.reduce((acc,a)=>ex_5_F(acc,a),1);
 }
 
+
+
+

@@ -42,19 +42,21 @@ Esercizio 11
 Data una lista di interi A, si riordini gli elementi della lista in modo tale che tutti gli elementi
 dispari precedano nello stesso ordine tutti gli elementi pari.
 */
-Array.prototype.ex_11 =function (){
-	var risultato = [];
-	var odds = [];
-	var evens = [];
-	this.filter(x => {
-		if(x % 2 == 0){
-			evens.push(x);
-		}else if(x % 2 !== 0){
-				odds.push(x);
-
-		return true;
-		}
+Array.prototype.ex_11 =function(){
+	var pari = [];
+	
+	pari = this.filter(function (x){
+		if(x%2 == 0)
+			return x;
+		
 	});
-	return risultato.concat(odds,evens);
+	var disp = [];
+	disp = this.filter(function (x){
+		if(x%2 != 0)
+			return x;
+		
+	});
+	return disp.concat(pari);
+	
 }
 

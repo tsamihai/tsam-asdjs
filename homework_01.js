@@ -143,12 +143,12 @@ function sumIntervalR(a, b) {
 
 
 // Per Tiziano
-function ex_4_I(x, y) {
-    return sumInterval(x, y);
+function ex_4_I(a, b) {
+    return sumInterval(a, b);
 }
 
 function ex_4_R(x, y) {
-    return sumIntervalR(x, y);
+    return sumIntervalR(a, b);
 }
 
 
@@ -176,11 +176,11 @@ function multR(a,b){
 
 
 // Per Tiziano
-function ex_5_I(x) {
+function ex_5_I(a,b) {
     return mult(a,b);
 }
 
-function ex_5_R(x) {
+function ex_5_R(a,b) {
     return multR(a,b);
 }
 
@@ -192,27 +192,48 @@ l’utilizzo dei soli operatori somma e sottrazione.
 Esempio:
 div(5, 3) => 1 resto 2*/
 
-function div(a,b){
-        divisone = b;  
-        resto =0;
-        dividendo = a;
-        quoziente = 0;
-        if(a <b){
-             return quoziente +'resto= ' + dividendo;   
-        } else{
-            Do
-               dividendo=dividendo-divisore;
-               quoziente++;
-               }while (dividendo>=divisore)
-                    resto=dividendo;            
+function divIte(a, b){
+	q = 0;
+    r = 0;
+	v = [];
+    if(a === 0 || b === 0){
+		return "error";
+    } else{
+   for(i = a; i >= b; i -= b){
+		q++;
+		r = i - b;
+					
+    }
+	v = [q,r];
+    return (v);
+    }
+} 
+
+
+function divRic(a, b, q){
+    
+    if(b === 0){
+        
+        return('error');
+    }else{
+        if(a >= b){
+            r = a - b;
+            q++;
+            return divRic(a - b, b, q);
+        } else {
+			v = [q,r];
+            return (v);
+        }
+    }
+
 }
 // Per Tiziano
 function ex_6_I(a,b) {
-    return div(a,b);
+    return divIte(a,b);
 }
 
 function ex_6_R(x) {
-    return divR(a,b);
+    return divRic(a,b);
 }
 
 
@@ -255,16 +276,33 @@ function ex_7_R(x) {
 Dato un array contenente n^2 elementi, scrivere un algoritmo che permetta di inserire tutti gli
 oggetti in un array bidimensionale n x n.*/
 
-function matrix(t){
-       a=[];
-       conta=0;
-       for (i=0; i<t;i++){
-            for ( y = 0; y <v;y++){
-                    a[x][y]=conta;
-                    conta++;
-            }                                  
-       }
+function matrix(myarray){
+       var n = Math.sqrt(myarray.length); 
+       var resarray=[];
+       var row =[];      
+       for (var i = 0; i < myarray.length;i++){
+            row[row.length=myarray[i]];
+            if (row.length==n){
+                resarray.push(row);
+                row= [];
+            }
+        }                                  
+       return resarray;
 }   
+function magic(myarray,matrix){
+    matrix.unshift(myarray);
+    
+}
+function matrixR(myarray,n){
+    if (myarray.length==n){
+        var a = [myarray];
+     } else{
+         var spli
+        return magic(myarray.slice(0,n),matrixR(myarray.slice(n)),n);
+
+     }
+
+}
 
 // Per Tiziano
 function ex_8_I(x) {
@@ -287,6 +325,23 @@ function ordina(myarray){
    }                            
      return a = x;
 }
+function scambia(a, i, j){
+	var tmp = a[i];
+	a[i] = a[j];
+	a[j] = tmp;
+}
+
+
+function ordinaR(myarray, i){
+	var z = myarray.length - 1 - i;
+	if(i <= z ){
+		
+		scambia(myarray, i, z);
+		return inverti_r(myarray, i+1);
+		}
+		return myarray;
+	
+}
 // Per Tiziano
 function ex_9_I(x) {
     return ordina(x);
@@ -301,15 +356,33 @@ contenenti a.
 Esempio:
 replicate(3, 4) => A= {3, 3, 3, 3}*/
 
+function lista(num1, num2){
+    vett = [];
+    for(i = 0; i < num2; i++){
+        vett.push(num1);
+    }
+    return vett;
+}
 
+
+//ricorsiva
+function listaR(vett, num1, num2){
+    if(num2 != 0){
+        vett.push(num1);
+        return replicateRicorsiva(vett, num1, num2 - 1);
+    } else {
+        
+        return vett;
+    }
+}
 
 // Per Tiziano
-function ex_10_I(x) {
-    return sumNeg(a,b);
+function ex_10_I(a,b) {
+    return lista(a,b);
 }
 
 function ex_10_R(x) {
-    return sumNegR(a,b);
+    return listaR(a,b);
 }
 /*11 Data una lista di interi A, si riordini gli elementi della lista in modo tale che tutti gli elementi
 dispari precedano nello stesso ordine tutti gli elementi pari.

@@ -1,26 +1,39 @@
-function codac(){
-     this.myarray= [];
-	 this.top = 0;
-	 this.bott = 0;
+
+function CircularQueue() {
+	CircularQueue(100);
 }
-var b = new codac;
-codac.prototype.enqueue = function(e){
-    this.myarray.bott = e;
-    this.bott = this.bott +1;
+
+function CircularQueue(n) {
+	this.length = n;
+	this.top = 0;
+	this.bottom = 0;
+	this.array = [];
 }
-codac.prototype.dequeue = function(){
-    valore = this.myarray.top;
-    this.top = this.top +1;
-    return valore;
-}
-codac.prototype.front = function(){
-    return this.myarray[this.top];
-}
-codac.prototype.isEmpty = function(){
-    return this.myarray.bott == this.myarray.top;
-    //return this.myarray.length == 0;
-}
-codac.prototype.size = function(){
-    return  Math.abs(this.bott - this.top);
-   //return this.myarray[this.myarray.length-1];
-}
+
+CircularQueue.prototype.enqueue = function(val) {
+	if (this.size() != this.length) {
+		this.array[this.bottom] = val;
+		this.bottom = (this.bottom + 1) % this.length;
+	}
+};
+
+CircularQueue.prototype.dequeue = function() {
+	if (!this.isEmpty()) {
+		var temp = this.array[this.top];
+		this.array[this.top] = undefined;
+		this.top = (this.top + 1) % this.length;
+		return temp;
+	}
+};
+
+CircularQueue.prototype.front = function() {
+	return this.array[this.top];
+};
+
+CircularQueue.prototype.isEmpty = function() {
+	return this.top == this.bottom;
+};
+
+CircularQueue.prototype.size = function() {
+	return Math.abs(this.bottom - this.top);
+};

@@ -1,33 +1,36 @@
-var merge = function (snx, dsx) {
-    var result = [],
-    a = 0,
-    b = 0;
-while(a < snx.length && b < dsx.length) {
-    if(snx[a] < dsx[b]) {
-        result.push(snx[a++]);
-    } else{
-        result.push(dsx[b++]);
-    }
+function merge(a1, a2) {
+	var i = 0;
+	var j = 0;
+	var merged = [];
+
+	while (i < a1.length && j < a2.length) {
+		if (a1[i] <= a2[j]) {
+			merged.push(a1[i]);
+			i++;
+		}
+		else {
+			merged.push(a2[j]);
+			j++;
+		}
+	}
+
+	return merged.concat((a1.length == i) ? a2.slice(j) : a1.slice(i));
 }
-while (a < snx.length){
-    result.push(snx[a++]);
+
+function mergesort(array) {
+	
+	if (array.length == 1)
+		return array;
+
+	var half = Math.floor(array.length / 2);
+
+	return merge(	mergesort(array.slice(0, half)),
+					mergesort(array.slice(half))	
+				);
+
 }
-while (b < dsx.length){
-    result.push(dsx[b++]);
-}
-return result;
-}
-
-
-
-var mergeSortRec = function (array){
-    
-};
-
-
-
 
 
 function ex_8 (x) {
-    return mergeSortRec (x);
+    return mergeSort(x);
 }

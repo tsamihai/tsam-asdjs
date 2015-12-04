@@ -14,7 +14,7 @@ function sumuntilnegF(myarray) {
     });
     return tot;
 }
-
+/*
 function sumuntilnegF2(myarray) {
     var tmparray = [];
     myarray.every( x => { 
@@ -25,7 +25,7 @@ function sumuntilnegF2(myarray) {
     });
     return tmparray.reduce((acc, x) => acc + x, 0);
 }
-
+*/
 function buildUntil(myarray, check) {
     var tmparray = [];
     myarray.every( x => { 
@@ -47,18 +47,11 @@ function sumuntilnegF3(myarray) {
 
 
 // Per Tiziano
-function ex_1_I(x) {
-    return sumwhileneg(x);
-}
 
-function ex_1_R(x) {
-    return sumwhilenegR(x);
-}
 
 function ex_1_F(x) {
     return sumuntilnegF(x);
 }
-
 
 /*
 Esercizio 2
@@ -77,13 +70,8 @@ function sumOddRF(n) {
 }
 
 // Per Tiziano
-function ex_2_I(x) {
-    return sumOdd(x);
-}
 
-function ex_2_R(x) {
-    return sumOddR(x);
-}
+
 function ex_2_F(x){
 	return sumOddRF(x);
 }
@@ -146,3 +134,25 @@ function ex_7_F(a,b){
 	return myarray.reduce((acc,a)=>ex_5_F(acc,a),1);
 }
 
+
+
+/*
+Esercizio 11
+Data una lista di interi A, si riordini gli elementi della lista in modo tale che tutti gli elementi
+dispari precedano nello stesso ordine tutti gli elementi pari.
+*/
+function ex_11_F(myarray){
+	var risultato = [];
+	var odds = [];
+	var evens = [];
+	myarray.filter(x => {
+		if(x % 2 == 0){
+			evens.push(x);
+		}else{
+				odds.push(x);
+
+		return true;
+		}
+	});
+	return risultato.concat(odds,evens);
+}
